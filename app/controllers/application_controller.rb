@@ -14,4 +14,8 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname, :last_name, :first_name, :last_name_phonetic, :first_name_phonetic, :birth_day])
   end
 
+  def log_params
+    Rails.logger.debug "DEBUG: #{params.inspect}"
+  end
+
 end
