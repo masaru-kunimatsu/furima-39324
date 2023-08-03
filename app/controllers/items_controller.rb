@@ -1,10 +1,20 @@
 class ItemsController < ApplicationController
 
   def index
+    @items = Item.all
   end
   
+  def new
+    @item = Item.new
+  end
+
   def create
-    Item.create(item_params)
+    @item = Item.new(item_params)
+    if @item.save
+      redirect_to action: :index
+    else
+      render :new
+    end
   end
 
   private
