@@ -11,11 +11,11 @@ class Item < ApplicationRecord
 
   validates :product_name, presence: true
   validates :description, presence: true
-  validates :category_id , presence: true, numericality: { other_than: 1 , message: "can't be blank"} 
-  validates :condition_id, presence: true, numericality: { other_than: 1 , message: "can't be blank"} 
-  validates :shipping_cost_burden_id, presence: true, numericality: { other_than: 1 , message: "can't be blank"} 
-  validates :prefecture_id, presence: true, numericality: { other_than: 1 , message: "can't be blank"} 
-  validates :shipping_day_id, presence: true, numericality: { other_than: 1 , message: "can't be blank"} 
+  validates :category_id , presence: true, numericality: { greater_than_or_equal_to: 2, less_than_or_equal_to: 11, message: "can't be blank"} 
+  validates :condition_id, presence: true, numericality: { greater_than_or_equal_to: 2, less_than_or_equal_to: 7, message: "can't be blank"} 
+  validates :shipping_cost_burden_id, presence: true, numericality: { greater_than_or_equal_to: 2, less_than_or_equal_to: 3, message: "can't be blank"} 
+  validates :prefecture_id, presence: true, numericality: { greater_than_or_equal_to: 2, less_than_or_equal_to: 48, message: "can't be blank"} 
+  validates :shipping_day_id, presence: true, numericality: { greater_than_or_equal_to: 2, less_than_or_equal_to: 4, message: "can't be blank"} 
   validates :price, presence: true, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }, format: { with: /\A[0-9]+\z/}
   validates :user, presence: true
   validates :image, presence: true
