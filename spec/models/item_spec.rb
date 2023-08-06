@@ -126,7 +126,6 @@ RSpec.describe Item, type: :model do
       it "priceは全角では登録できない" do
         @item.price = "５００"
         @item.valid?
-        binding.pry
         expect(@item.errors.full_messages).to include("Price is not a number")
       end
     end
