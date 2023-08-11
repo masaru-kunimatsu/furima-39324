@@ -37,11 +37,8 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    if @item.destroy(item_params)
-      redirect_to action: :index
-    else
-      render :show
-    end
+    @item.destroy
+    redirect_to root_path
   end
 
   def set_item
