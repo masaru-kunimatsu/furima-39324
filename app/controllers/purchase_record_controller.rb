@@ -4,7 +4,7 @@ class PurchaseRecordController < ApplicationController
   end
 
   def new
-    @purchase_address = Purchaseaddress.new
+    @purchase_address = PurchaseAddress.new
   end
 
   def create

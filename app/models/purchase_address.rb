@@ -4,6 +4,8 @@ class PurchaseAddress
   attr_accessor :user_id, :item_id, :postal_code, :prefecture_id, :city, :block_number, :building, :telephone_number, :purchase_record
 
   with_options presence: true do
+    validates :user_id
+    validates :item_id
     validates :postal_code, format: { with: /\A\d{3}[-]\d{4}\z/}
     validates :prefecture_id, numericality: { greater_than_or_equal_to: 2, less_than_or_equal_to: 48, message: "can't be blank"} 
     validates :city 
