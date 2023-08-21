@@ -3,11 +3,6 @@ class PurchaseAddress
   include ActiveModel::Model
   attr_accessor :user_id, :item_id, :postal_code, :prefecture_id, :city, :block_number, :building, :telephone_number, :purchase_record, :token
   
-  def initialize(attributes = {})
-    super
-    @token = attributes[:token]
-  end
-  
   with_options presence: true do
     validates :user_id
     validates :item_id

@@ -1,8 +1,8 @@
 class PurchaseRecordsController < ApplicationController
   before_action :authenticate_user!
+  before_action :find_item, only: [:index, :create]
 
   def index
-    @item = Item.find(params[:item_id])
     unless current_user.id == @item.user_id || @item.purchase_record.present?
       @purchase_address = PurchaseAddress.new
     else
@@ -11,7 +11,6 @@ class PurchaseRecordsController < ApplicationController
   end
 
   def create
-    @item = Item.find(params[:item_id])
     @purchase_address = PurchaseAddress.new(purchase_params)
     if @purchase_address.valid?
       pay_item
@@ -37,4 +36,7 @@ class PurchaseRecordsController < ApplicationController
     )
   end
 
+  def find_item
+    @item = Item.find(params[:item_id])
+  end
 end
