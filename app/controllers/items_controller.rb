@@ -11,10 +11,11 @@ class ItemsController < ApplicationController
   end
 
   def show
+    
   end
 
   def edit
-    unless current_user.id == @item.user.id
+    unless current_user.id == @item.user.id && !@item.purchase_record.present?
       redirect_to root_path
     end
   end
